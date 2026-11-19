@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matemática & Consumo de Água</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- ===== MENU FIXO ===== -->
+  <header class="navbar">
+    <div class="logo">💧 Água & Matemática</div>
+    <nav>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <ul id="menuList">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#conceitos">Conceitos</a></li>
+        <li><a href="#calculadora">Calculadora</a></li>
+        <li><a href="#simulador">Simulador</a></li>
+        <li><a href="#desafios">Desafios</a></li>
+        <li><a href="#codigo">Programação</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#dicas">Dicas</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HOME ===== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Matemática e Resolução de Problemas Aplicadas ao Consumo de Água</h1>
+      <p>Aprenda matemática resolvendo problemas reais sobre o uso da água.</p>
+      <a href="#calculadora" class="btn">Começar a explorar</a>
+    </div>
+    <div class="cards-destaque">
+      <a href="#calculadora" class="card"><span>🧮</span><h3>Calculadora</h3><p>Descubra seu consumo</p></a>
+      <a href="#simulador" class="card"><span>🎯</span><h3>Simulador</h3><p>Economize água</p></a>
+      <a href="#desafios" class="card"><span>🧩</span><h3>Desafios</h3><p>Resolva problemas</p></a>
+      <a href="#dashboard" class="card"><span>📊</span><h3>Dashboard</h3><p>Veja os dados</p></a>
+    </div>
+    <div class="curiosidades">
+      <p>💡 <strong>1 minuto de torneira aberta</strong> = cerca de <strong>6 litros</strong> de água.</p>
+      <p>💡 Uma descarga antiga gasta até <strong>12 litros</strong>; as modernas, <strong>6 litros</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ===== CONCEITOS ===== -->
+  <section id="conceitos" class="secao">
+    <h2>📚 Conceitos e Fundamentos</h2>
+    <h3>Consumo médio por atividade</h3>
+    <table class="tabela">
+      <thead>
+        <tr><th>Atividade</th><th>Consumo médio (L)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Banho de 15 min (chuveiro)</td><td>~135</td></tr>
+        <tr><td>Descarga (vaso antigo)</td><td>~12</td></tr>
+        <tr><td>Lavar louça (torneira aberta)</td><td>~100</td></tr>
+        <tr><td>Máquina de lavar roupas</td><td>~150</td></tr>
+        <tr><td>Escovar dentes (torneira fechada)</td><td>~0,5</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Fórmulas matemáticas</h3>
+    <ul class="lista-formulas">
+      <li><code>Consumo = vazão × tempo</code></li>
+      <li><code>Consumo mensal = consumo diário × 30</code></li>
+      <li><code>Economia (%) = ((antes − depois) / antes) × 100</code></li>
+    </ul>
+
+    <h3>Conversões</h3>
+    <p>1 m³ = 1.000 litros</p>
+  </section>
+
+  <!-- ===== CALCULADORA ===== -->
+  <section id="calculadora" class="secao">
+    <h2>🧮 Calculadora de Consumo</h2>
+    <form id="formCalc" class="form-grid">
+      <label>Tempo de banho por dia (min)
+        <input type="number" id="banho" min="0" value="10" required>
+      </label>
+      <label>Nº de banhos por dia
+        <input type="number" id="qtdBanhos" min="0" value="1" required>
+      </label>
+      <label>Descargas por dia
+        <input type="number" id="descargas" min="0" value="4" required>
+      </label>
+      <label>Lavagens de louça por dia (min)
+        <input type="number" id="louca" min="0" value="15" required>
+      </label>
+      <label>Vazão do chuveiro (L/min)
+        <input type="number" id="vazao" min="0" step="0.1" value="9" required>
+      </label>
+      <button type="submit" class="btn">Calcular</button>
+    </form>
+
+    <div id="resultadoCalc" class="resultado"></div>
+    <canvas id="graficoConsumo" width="400" height="300"></canvas>
+  </section>
+
+  <!-- ===== SIMULADOR ===== -->
+  <section id="simulador" class="secao">
+    <h2>🎯 Simulador de Economia</h2>
+    <p>Reduza o tempo de banho e veja a economia:</p>
+    <label>Tempo atual (min): <span id="tempoAtualVal">15</span>
+      <input type="range" id="tempoAtual" min="1" max="30" value="15">
+    </label>
+    <label>Novo tempo (min): <span id="tempoNovoVal">5</span>
+      <input type="range" id="tempoNovo" min="1" max="30" value="5">
+    </label>
+    <label>Pessoas na casa:
+      <input type="number" id="pessoas" min="1" value="4">
+    </label>
+    <div id="resultadoSim" class="resultado"></div>
+  </section>
+
+  <!-- ===== DESAFIOS ===== -->
+  <section id="desafios" class="secao">
+    <h2>🧩 Desafios e Problemas Matemáticos</h2>
+    <div class="desafio">
+      <p><strong>Desafio 1 (fácil):</strong> Uma família de 4 pessoas toma 2 banhos/dia de 10 min. Vazão = 9 L/min. Qual o consumo diário?</p>
+      <button class="btn-revelar" data-resposta="4 × 2 × 10 × 9 = 720 litros/dia">Ver resolução</button>
+      <p class="resposta"></p>
+    </div>
+    <div class="desafio">
+      <p><strong>Desafio 2 (médio):</strong> Se reduzir cada banho para 5 min, qual a economia mensal (30 dias)?</p>
+      <button class="btn-revelar" data-resposta="Economia diária: 720 − 360 = 360 L. Mensal: 360 × 30 = 10.800 litros.">Ver resolução</button>
+      <p class="resposta"></p>
+    </div>
+    <div class="desafio">
+      <p><strong>Desafio 3 (difícil):</strong> Uma caixa d'água de 1.000 L abastece essa família. Em quantos dias ela esvazia com o consumo original?</p>
+      <button class="btn-revelar" data-resposta="1000 / 720 ≈ 1,39 dias (≈ 1 dia e 9 horas).">Ver resolução</button>
+      <p class="resposta"></p>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMAÇÃO ===== -->
+  <section id="codigo" class="secao">
+    <h2>💻 Programação Aplicada</h2>
+    <p>Veja o código por trás da calculadora (JavaScript):</p>
+    <pre class="code-block"><code>// Função que calcula o consumo diário (em litros)
+function calcularConsumo(banhoMin, qtdBanhos, vazao, descargas, loucaMin) {
+  const consumoBanho = banhoMin * qtdBanhos * vazao;
+  const consumoDescarga = descargas * 12; // 12 L por descarga
+  const consumoLouca = loucaMin * 6;      // 6 L por minuto
+  return consumoBanho + consumoDescarga + consumoLouca;
+}</code></pre>
+    <p>Desafio: implemente sua própria versão e compare com a calculadora acima!</p>
+  </section>
+
+  <!-- ===== DASHBOARD ===== -->
+  <section id="dashboard" class="secao">
+    <h2>📊 Dashboard de Dados</h2>
+    <p>Consumo médio per capita por região (L/dia) — dados ilustrativos:</p>
+    <canvas id="graficoRegioes" width="400" height="300"></canvas>
+  </section>
+
+  <!-- ===== DICAS ===== -->
+  <section id="dicas" class="secao">
+    <h2>🌱 Conscientização e Dicas</h2>
+    <ul class="lista-dicas">
+      <li>Feche a torneira ao escovar os dentes.</li>
+      <li>Reduza o tempo de banho para 5 minutos.</li>
+      <li>Conserte vazamentos imediatamente.</li>
+      <li>Use a máquina de lavar com carga cheia.</li>
+      <li>Reaproveite água da chuva para regar plantas.</li>
+    </ul>
+    <p><strong>ODS 6:</strong> Água Potável e Saneamento — Agenda 2030 da ONU.</p>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre" class="secao">
+    <h2>👥 Sobre o Projeto</h2>
+    <p>Projeto da disciplina de <strong>Programação</strong>, unindo matemática e conscientização sobre o consumo de água.</p>
+    <p><strong>Tecnologias:</strong> HTML, CSS, JavaScript e Chart.js.</p>
+    <p><strong>Fontes:</strong> SNIS, ANA, ONU.</p>
+  </section>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="footer">
+    <p>💧 Projeto Acadêmico — Matemática e Programação Aplicadas ao Consumo de Água</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
